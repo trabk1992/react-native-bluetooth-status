@@ -71,6 +71,15 @@ class BluetoothManager {
   async disable() {
     return this.enable(false);
   }
+
+  async enableBluetooth() {
+    if (Platform.OS === "android") {
+      const status = await RNBluetoothManager.enableBluetooth();
+      return status;
+    } else {
+      return false;
+    }
+  }
 }
 
 export const BluetoothStatus = new BluetoothManager();
